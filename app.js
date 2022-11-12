@@ -1,6 +1,6 @@
 const express = require("express")
 const morgan = require("morgan")
-const { urlencoded } = require("body-parser")
+const taskRoute = require("./routes/tasks")
 const {
   errorLogger,
   errorResponder,
@@ -11,8 +11,10 @@ const {
 const app = express()
 
 app.use(express.json())
-app.use(urlencoded({ extended: false }))
+app.use(express.urlencoded({ extended: false }))
 app.use(morgan("dev"))
+
+app.use("/api/v1/tasks", taskRoute)
 
 
 
