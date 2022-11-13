@@ -9,6 +9,10 @@ const PORT = process.env.PORT || 4040
 const server = http.createServer(app)
 
 server.listen(PORT, async () => {
-  await connectDB()
+    try {
+        await connectDB()
   console.log("Server running on port ", PORT)
+    } catch (err) {
+        console.error(err)
+    }
 })
