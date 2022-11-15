@@ -7,19 +7,13 @@ const {
   invalidPathHandler
 } = require("./middlewares/errHandler")
 
-
 const app = express()
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(morgan("dev"))
 
-app.use("/api/v1/tasks", taskRoute)
-
-
-
-
-
+app.use("/api/v1/task", taskRoute)
 
 app.all("*", (req, res, next) => {
   next()
